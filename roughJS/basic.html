@@ -1,0 +1,29 @@
+<html>
+<head>
+  <title>RoughJS Basics</title>
+  <script src="https://cdn.rawgit.com/pshihn/rough/9be60b1e/dist/rough.min.js"></script>
+</head>
+<body>
+  <h2>RoughJS Basics</h2>
+  <canvas id="canvas" width="800" height="600"></canvas>
+  <script>
+    const rc = rough.canvas(document.getElementById('canvas'));
+    // line and rectangles
+    rc.line(60, 60, 190, 60);
+    rc.rectangle(10, 10, 100, 100);
+    rc.rectangle(140, 10, 100, 100, {
+      fill: 'green',
+      fillStyle: 'solid',
+      roughness: 2
+    });
+    rc.rectangle(10, 130, 100, 100, {
+      fill: 'blue',
+      stroke: 'yellow',
+      hachureAngle: 60,
+      hachureGap: 10,
+      fillWeight: 5,
+      strokeWidth: 3
+    });
+  </script>
+</body>
+</html>
