@@ -1,1 +1,1 @@
-# New Learnings
+# Styling Lessons
