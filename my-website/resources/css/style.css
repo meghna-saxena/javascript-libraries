@@ -31,8 +31,56 @@ header {
     width: 1140px;
     top: 50%;
     left: 50%;
-    text-align: center;
     transform: translate(-50%, -50%);
+    text-align: center;
 }
 
-h1 { margin: 0; }
+h1 { 
+    margin: 0;
+    color: #fff;
+    font-size: 160%; /* basic fontsize is 20px, so make every other fontsize relative to it */
+    font-weight: 400;
+    /* letter-spacing: 1px;
+    word-spacing: 2px; */
+ }
+
+ p { 
+    color: #fff;
+    font-size: 85%;
+    margin: 50px 0;
+    word-spacing: 1px;
+ }
+
+ .btn:link,
+ .btn:visited {
+     display: inline-block;
+     padding: 10px 30px;
+     font-weight: 300;
+     text-decoration: none;
+     border-radius: 200px;
+     color: #fff;
+     transition: background-color 0.2s;
+     font-size: 70%;
+ }
+
+ .btn-full:link,
+ .btn-full:visited {
+     background-color: #2ed573;
+     border: 1px solid #2ed573;
+     margin-right: 15px;
+ }
+
+ .btn-full:hover,
+ .btn-full:active {
+     background-color: #26bb64;
+ }
+
+ .btn-transparent:link,
+ .btn-transparent:visited {
+     border: 1px solid #fff;
+ }
+
+ .btn-transparent:hover,
+ .btn-transparent:active {
+     background-color: #6261ef;
+ }
