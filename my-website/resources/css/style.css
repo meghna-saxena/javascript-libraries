@@ -170,12 +170,29 @@ h1 {
     padding: 15px 25px;;
 }
 
-.card {
-    
+.content {
+    margin-top: 60px;
 }
 
-section {
+section.features {
     padding: 80px 0;
+}
+
+section.details {
+    padding: 140px 0;
+    background-color: #f0f0f0;
+}
+
+section.frameworks {
+    padding: 140px 0;
+}
+
+.details-content {
+    font-size: 120%;
+     font-weight: 400;
+     color: #000;
+     margin-bottom: 20px;
+    text-align: left;
 }
 
 .features-para {
@@ -192,4 +209,25 @@ section {
     margin-right: auto;
     margin-bottom: 40px;
     width: 50%;
+}
+
+.details-img {
+    height: 190px;
+    width: 140px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 40px;
+    width: 50%;
+}
+
+.frameworks-img {
+    /* height: 190px; */
+    width: 140px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 40px;
+    width: 50%;
+
 }
