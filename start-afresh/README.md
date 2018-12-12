@@ -164,4 +164,175 @@ Eg: Add a combinator to h1 selector to narrow down which h1 tag is selected.
 
 __________________________________________________________________________
 
-  # Diving deeper in CSS
+# Diving deeper in CSS
+
+- Box model
+  - Height & width properties
+  - Display property (layout of page and positioning of elements)
+  - Properties worth to remember: CSS references
+  - Psuedo classes and elements
+
+## CSS Box Model
+- Every element in css is interpreted as a "box" which consists of content, padding, border, margin.
+- 2 diff types of elements: block-level and inline
+
+
+## Understanding margin collapsing & removing default margins
+- The body element also has a default margin, so set margin: 0 initially;
+- Every h1 has agagin some default margin
+
+Margin collpasing: if there're 2 elements -
+  -> 2 block element arrange one below another, then margin b/w them is collapsed to
+  one margin. The bigger margin wins!
+  -> In general, use margin-top or margin-bottom to prevent the collpasing
+
+### Shorthand properties:
+- Combine multiple properties into one single property
+Eg: border-width, border-style, border-color -> condensed to border: 2px solid orange
+    margin-top, margin-right, margin-bottom, margin-left -> 
+    condensed to margin: 5px(top) 10px(right) 5px(bottom) 10px(left) || 5px (top & bottom) 10px(left & right)
+
+
+### Height & width properties
+`width: 100%` takes entire width of the page. This is default behavior since section, div, h1 elements are block level 
+elements
+
+`height: 100%` refers to available height given by the parent container. Otherwise takes only the height of the content. 
+So give abosulte height (px) to parent container first. Then relative height (%) will work in child container.
+
+```
+.main { height: 300px };
+section { height: 100% }; //works!
+```
+
+Note: When adding a height, margins do not collapse anymore.
+
+
+### Understanding box-sizing
+All elements have default way of calculating width & height k/a `box-sizing: content-box`, which only calculates content area,
+and padding, border, margin are excluded. Set it to `border-box` to prevent this behavior. Width & height now includes the padding
+and border. This property is not used in css of body element, since div or section are block-level elements so
+inheritance doesnt work and this property is not applied. So use universal selector (*). Its overriding inheritance and browser defaults now.
+
+- `*` selects all elements whereas we rely on inheritance otherwise. If you have an element that overwrites border-box (e.g. the browser default sets a different border-box), inheritance will not do the job. Selecting the element directly (via * ) will however.
+
+
+
+### Adding header
+```
+ <header class="main-header">
+        <div>
+            <a href="index.html">
+                uHost
+            </a>
+        </div>
+        <nav>
+            <ul>
+                <li>
+                    <a href="packages/index.html">Packages</a>
+                </li>
+                <li>
+                    <a href="packages/index.html">Customers</a>
+                </li>
+                <li>
+                    <a href="packages/index.html">Start Hosting</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+```
+
+### Display property
+- The display property allows to change the behavior of the element from block to inline or inline-block  
+or to remove it from DOM. 
+
+Note: display: none just removes the element from visible document flow, not from the DOM. You can still set it in
+inspected html elements on browser.
+
+Eg of inline elements: <a> anchor tags. They dont take the entire width.
+
+- Inline bock elements behaves like inline elements by sitting next to each other, but they can be modified by 
+setting margins, paddings like block level elements.
+
+`display: none vs visibility: hidden`
+
+`display: none;`  - this value removes the element to which you apply it from the document flow. 
+This means that the element is not visible and it also doesn't "block its position". 
+Other elements can (and will) take its place instead.
+
+There is an alternative to that though.
+
+If you only want to hide an element but you want to keep its place (i.e. other elements don't fill the empty spot), 
+you can use `visibility: hidden;`
+
+Here's a visual example:
+```
+.box-1 {
+    display: none;
+}
+ 
+.box-2 {
+    display: inline-block;
+}
+```
+Will render:
+
+`x  `
+
+where `x`  has the class box-2 . The first element just isn't displayed. It's still part of the DOM though, 
+you can still access it via JavaScript for example.
+
+Here's an example for visibility: hidden :
+
+```
+.box-1 {
+    visibility: hidden;
+}
+ 
+.box-2 {
+    display: inline-block;
+}
+```
+Will render:
+
+`_x `
+
+where `_`  simply is an empty spot and `x ` has the class box-2 .
+
+The element is only invisible, it's not removed from the document flow and of course also not from the DOM.
+
+
+`Block-level vs Inline Elements`
+
+- Block-level elements are rendered as a block and hence take up all the available horizontal space.
+You can set margin-top and margin-bottom and two block-level elements will render in two different lines.
+
+Some examples are: `<div> , <section> , <article> , <nav>  but also <h1> , <h2>  etc and <p>`
+
+- Inline elements on the other hand only take up the space they require to fit their content in. 
+Hence two inline-elements will fit into the same line (as long as the combined content doesn't take up the 
+entire space in which case a line break would be added).
+
+They also use the box-model you learned about but margin-top  and margin-bottom have no effect on the element. 
+padding-top  and padding-bottom  also have a different effect. They don't push the adjacent content away but they 
+will do so with the element border.
+
+Additionally, setting a width  or height on an inline element also has no effect. 
+The width and height is auto to take as much space as required by the content.
+
+Logically, this makes sense since you don't want your inline elements to destroy your multi-line text-layout. 
+If you want to do so or need both block-level and inline behavior, you can set display: inline-block to merge behaviors.
+
+Some example elements are: `<a> , <span> , <img> `
+
+
+Note: 
+- Use `calc() property` like this: width: calc(100% - 54px);
+- `vertical-align: middle` to both elements to ensure that the elements are perfectly aligned to each other.
+If you don't apply it to the div, select the div in the Developer Tools and open the "Computed" tab, you see that 
+the default value for vertical-align is baseline. That's not what we want as the elements should be aligned at the same level
+therefore we have to add vertical-align: middle to both elements.
+
+## BEM - Block element modifier
+It helps keeping your CSS class names clean and structured and avoid name collisions
+Eg: .main-nav__items, .main-nav__item
