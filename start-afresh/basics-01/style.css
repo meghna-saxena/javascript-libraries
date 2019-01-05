@@ -62,4 +62,27 @@ body {
 .main-nav__item a {
   color: #0e4f1f;
   text-decoration: none;
+  font-weight: bold;
+  padding: 3px 0; 
 }
+
+.main-nav__item a:hover, 
+.main-nav__item a:active {
+  color: #fff;
+  border-bottom: 1px solid #fff;
+}
+
+.main-nav__item--cta a {
+  color: #fff;
+  background: #ff1b68;
+  padding: 8px 16px;
+  border-radius: 8px;
+}
+
+.main-nav__item--cta a:hover,
+.main-nav__item--cta a:active {
+  color: #ff1b68;
+  background: #fff;
+  border: none;
+}
+

@@ -336,3 +336,61 @@ therefore we have to add vertical-align: middle to both elements.
 ## BEM - Block element modifier
 It helps keeping your CSS class names clean and structured and avoid name collisions
 Eg: .main-nav__items, .main-nav__item
+
+
+## Pseudo classes & elements
+- Pseudoclass defines a class/style for a `special state` of an element like :hover, :active state
+- Pseudoelements deines a style of a `specific part` of an element. They are defined by '::' double colons,
+then element's name. Eg: ::fisrt-letter, 
+
+::after, ::before helps to render content according to css
+
+Note: Content can be displayed by css, but it should be done by html due to a11y reasons
+
+### How a web browser reads the code you may want to check out:
+
+1. Parsing HTML and creating the DOM Tree – HTML is a hierarchal structure that begins with a <html> tag, 
+usually contains a <head> and <body> tag, and elements can be nested within elements. These HTML elements 
+are parsed and turned into a “DOM tree” by the rendering engine. It is a tree like structure made out of the HTML, 
+where each tag is a branch starting at the root element.
+
+2. Render Tree Construction – CSS attributes (style attributes) are also parsed and combined with the DOM tree to 
+create a “render tree”. This is a tree of visual elements such as height/width and color ordered in the hierarchy 
+in which they are to be displayed in the browser.
+
+3. Layout Process – Once the render tree is constructed, the rendering engine recursively goes through the HTML 
+elements in the tree and figure out where they should be placed on the screen. This starts at the top left in position 0,0 
+and elements and attributes are mapped to coordinates on the screen.
+
+4. Painting – Each node (branch) of the render tree is drawn out on the screen by communicating with the Operating System Interface which contains designs and styles for how UI elements should look.
+
+
+Note:
+CTA button -> Call to action button
+
+
+Reminder:
+Are these notations identical: `.main-nav__item a ` and `a.main-nav__item `?
+
+No, these two selectors target different HTML elements/ structures.
+
+`.main-nav__item a ` targets elements like 
+
+```
+<div class="main-nav__item">
+    <a href="...">Some Link</a>
+</div>
+```
+
+whilst `a.main-nav__item` targets elements like
+
+```
+<a href="..." class="main-nav__item">Some Link</a> 
+```
+
+So the first syntax targets links (<a>  elements) inside of some element with a class of main-nav__item  
+whilst the second syntax targets links (<a> elements) which have the main-nav__item class attached to themselves.
+
+
+
+### Adding background-image
